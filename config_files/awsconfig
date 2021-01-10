@@ -1,0 +1,10 @@
+[default] 
+region = us-east-1 
+s3 = 
+    endpoint_url = https://server_name 
+    output = json 
+
+s3api =
+    endpoint_url = https://server_name 
+[plugins] 
+endpoint = awscli_plugin_endpoint

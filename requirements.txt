@@ -1,0 +1,5 @@
+kafka-python==2.0.1
+python-dotenv==0.14.0
+pylint==2.5.3
+awscli-plugin-endpoint==0.4
+dvc[s3]==1.11.10

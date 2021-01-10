@@ -1,0 +1,8 @@
+%awsSecretAccessKeys = (
+    # personal account
+    # personal is a [friendly-name] . It can be named anything & is used in given s3curl commands.
+    personal => {
+        id => 'AWS_ACCESS_KEY_ID',
+        key => 'AWS_SECRET_ACCESS_KEY',
+    }
+);

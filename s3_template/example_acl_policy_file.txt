@@ -1,0 +1,53 @@
+{
+    "Id": "UDPPolicy1357935677554",
+    "Statement": [
+        {
+            "Sid": "UDP-SID",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:aws:s3:::nestedtest/folder1/*",
+            "Principal": {
+              "AWS": [
+                "aisg_user02"
+              ]
+            }
+          }
+    ]
+}
+
+
+
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AccessControlPolicy xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <Owner>
+        <ID>aisg_user</ID>
+        <DisplayName>aisg_user</DisplayName>
+    </Owner>
+    <AccessControlList>
+            <Grant>
+                <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser">
+                    <ID>aisg_user</ID>
+                    <DisplayName>aisg_user</DisplayName>
+                </Grantee>
+                <Permission>FULL_CONTROL</Permission>
+            </Grant>
+            <Grant>
+                <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser">
+                    <ID>aisg_user02</ID>
+                    <DisplayName>aisg_user02</DisplayName>
+                </Grantee>
+                <Permission>READ</Permission>
+            </Grant>
+            <Grant>
+                <Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser">
+                    <ID>aisg_user02</ID>
+                    <DisplayName>aisg_user02</DisplayName>
+                </Grantee>
+                <Permission>WRITE</Permission>
+            </Grant>
+    </AccessControlList>
+</AccessControlPolicy>

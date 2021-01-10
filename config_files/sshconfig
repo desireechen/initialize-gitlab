@@ -1,0 +1,6 @@
+Host host_name
+    HostName host_name
+    User git
+    Port port_number
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly Yes
