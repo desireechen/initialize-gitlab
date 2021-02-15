@@ -268,14 +268,14 @@ do
     if [ $DRY_RUN_TEST_ONLY == "no" ]
     then
         echo "[SETUP] executing ACL"
-        perl s3curl.pl --id=personal --put acl.xml -- https://necs.nus.edu.sg/$i?acl
+        perl s3curl.pl --id=personal --put acl.xml -- https://$S3CURL_ENDPOINT/$i?acl
     fi
     rm ./acl.xml
 
     if [ $DRY_RUN_TEST_ONLY == "no" ]
     then
         echo "[SETUP] executing POLICY"
-        perl s3curl.pl --id=personal --put policy.json -- https://necs.nus.edu.sg/$i?policy
+        perl s3curl.pl --id=personal --put policy.json -- https://$S3CURL_ENDPOINT/$i?policy
     fi
     rm ./policy.json
 
