@@ -33,8 +33,11 @@ Both `create_gitlab_group.sh` and `create_gitlab_group_dvc.sh` call GitLab API a
 ### Sample `.env` file
 
 APPLICATION_ID=b2-0dcyvba-c04fc-ei98cb-0
+
 TENANT_ID=74f371b98nbosn-0dcyvb-eivihgnds]
+
 AZCOPY_SPA_CLIENT_SECRET=9h8ig371b98nbou2ZR6HkrFBTHvH
+
 AZURE_ACCOUNT_NAME=teststorageaccount
 
 S3_ACCESS_KEY_ID=the_user
