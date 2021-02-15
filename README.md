@@ -32,12 +32,10 @@ Both `create_gitlab_group.sh` and `create_gitlab_group_dvc.sh` call GitLab API a
 
 ### Sample `.env` file
 
+```
 APPLICATION_ID=b2-0dcyvba-c04fc-ei98cb-0
-
 TENANT_ID=74f371b98nbosn-0dcyvb-eivihgnds]
-
 AZCOPY_SPA_CLIENT_SECRET=9h8ig371b98nbou2ZR6HkrFBTHvH
-
 AZURE_ACCOUNT_NAME=teststorageaccount
 
 S3_ACCESS_KEY_ID=the_user
@@ -49,6 +47,7 @@ GITLAB_PORT=2929
 SSH_FOR_GITLAB_PUBLIC=ssh-ed25519 AABBBCCCCCDDPOOOOOOORJGBJPt2NL data_architect@execute.org
 SSH_FOR_GITLAB_PRIVATE=-----BEGIN OPENSSH PRIVATE KEY-----\ccytrrpbnuydbnb3Blbbm9uZQAAAAgtZW\T9ug1Nt0elblt7z7djSwAKx7f\2gF\n-----END OPENSSH PRIVATE KEY-----
 BEARER_TOKEN=ig371b98nbou2ZR6Hk
+```
 
 ### How to run scripts?
 
