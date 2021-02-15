@@ -1,3 +1,3 @@
-﻿project_id
-b7abc
-b7def
+﻿project_id,user_id,access
+b7abc,user1@execute.sg,40
+b7abc,user2@execute.sg,40
