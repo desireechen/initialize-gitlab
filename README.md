@@ -8,10 +8,10 @@ Docker image:
 
 1. Create Azure/S3 resources, sets ACL policies relating to S3.
 
-Both `create_gitlab_group.sh` and `create_gitlab_group_dvc.sh` call GitLab API and create group(s) in GitLab. Not able to create another group with a similar name. Groups can be created using a Personal Access Token (obtained from above GitLab user account) placed under the Bearer Token Authorization argument in the curl command. 
+Both `create_gitlab_group.sh` and `create_gitlab_group_dvc.sh` call GitLab API and create group(s) in GitLab. Not able to create another group with a similar name. Groups can be created using a Personal Access Token (obtained from GitLab user account) placed under the Bearer Token Authorization argument in the curl command. 
 
 - `config_files/awsconfig` and `prepare_s3_config.sh`: Contain the aws configuration. 
-- `setup.csv`: Contains group names (e.g. SGH, IRAS), users and access rights.
+- `setup.csv`: Contains group names (e.g. b7abc, b7def), users and access rights.
 - `azure_ecs_dvc.sh`: Reads from `setup.csv`. Creates Azure containers and S3 buckets. Also, sets ACL and policies relating to S3.
 - `delete.csv`: Contains group names to be deleted. 
 - `automation_delete.sh`: Deletes Azure/S3 resources that are no longer required. 
@@ -23,11 +23,29 @@ Both `create_gitlab_group.sh` and `create_gitlab_group_dvc.sh` call GitLab API a
 
 ### Prepare your workspace
 
-1. `git clone https://github.com/desireechen/initialize-gitlab.git`
+1. Ensure that you have Docker installed.
+2. Git clone this repository.
 2. `cd initialize-gitlab`
-3. Make `.env` file.
+3. Make `.env` file. See next section for sample `.env` file.
 4. Build docker image: `docker build -t genesis .`
-5. Go to `inputs` folder. Amend `setup.csv` to have the various projects, users and access rights. Amend `gitlab.csv` to have the projects that require GitLab groups. Amend `delete.csv` to have the projects to be deleted. _Project names cannot contain spaces or underscores._ 
+5. Go to `inputs` folder. Amend `setup.csv` to have the various projects, users and access rights for S3 bucket. Amend `gitlab.csv` to have the various projects, users and access levels for GitLab groups. Amend `delete.csv` to have the projects to be deleted. _Project names cannot contain spaces or underscores._ 
+
+### Sample `.env` file
+
+APPLICATION_ID=b2-0dcyvba-c04fc-ei98cb-0
+TENANT_ID=74f371b98nbosn-0dcyvb-eivihgnds]
+AZCOPY_SPA_CLIENT_SECRET=9h8ig371b98nbou2ZR6HkrFBTHvH
+AZURE_ACCOUNT_NAME=teststorageaccount
+
+S3_ACCESS_KEY_ID=the_user
+S3_SECRET_ACCESS_KEY=RHkrFBTfc-eiIP3ZZPPwVrlDPGl1Nt
+S3CURL_ENDPOINT=ecs.mit.execute.org
+
+GITLAB_HOST=gitlab.int.execute.org
+GITLAB_PORT=2929
+SSH_FOR_GITLAB_PUBLIC=ssh-ed25519 AABBBCCCCCDDPOOOOOOORJGBJPt2NL data_architect@execute.org
+SSH_FOR_GITLAB_PRIVATE=-----BEGIN OPENSSH PRIVATE KEY-----\ccytrrpbnuydbnb3Blbbm9uZQAAAAgtZW\T9ug1Nt0elblt7z7djSwAKx7f\2gF\n-----END OPENSSH PRIVATE KEY-----
+BEARER_TOKEN=ig371b98nbou2ZR6Hk
 
 ### How to run scripts?
 
@@ -37,7 +55,7 @@ Both `create_gitlab_group.sh` and `create_gitlab_group_dvc.sh` call GitLab API a
 docker run \
   --env DRY_RUN_TEST_ONLY=no \
   --env-file .env \
-  -v /home/desiree/setup-scripts/inputs/setup.csv:/home/appuser/setup.csv \
+  -v $(pwd)/inputs/setup.csv:/home/appuser/setup.csv \
   genesis:latest /bin/bash azure_ecs_dvc.sh
 ```
 
@@ -47,7 +65,7 @@ docker run \
 docker run \
   --env DRY_RUN_TEST_ONLY=no \
   --env-file .env \
-  -v /home/desiree/setup-scripts/inputs/gitlab.csv:/home/appuser/gitlab.csv \
+  -v $(pwd)/inputs/gitlab.csv:/home/appuser/gitlab.csv \
   genesis:latest /bin/bash create_gitlab_group_dvc.sh
 ```
 
@@ -57,7 +75,7 @@ docker run \
 docker run \
   --env DRY_RUN_TEST_ONLY=no \
   --env-file .env \
-  -v /home/desiree/setup-scripts/inputs/delete.csv:/home/appuser/delete.csv \
+  -v $(pwd)/inputs/delete.csv:/home/appuser/delete.csv \
   genesis:latest /bin/bash automation_delete.sh
 ```
 
